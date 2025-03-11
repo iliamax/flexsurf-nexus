@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import NetworkShowcase from "@/components/NetworkShowcase";
 import ServiceAreaMap from "@/components/ServiceAreaMap";
 import ChatSupport from "@/components/ChatSupport";
+import LogoSpinner from "@/components/LogoSpinner";
 
 const Index = () => {
   return (
@@ -17,6 +18,9 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
+        <div className="py-16 flex justify-center">
+          <LogoSpinner size="large" className="drop-shadow-xl" />
+        </div>
         <Stats />
         <Services />
         <NetworkShowcase />

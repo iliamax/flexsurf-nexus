@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -64,16 +63,11 @@ const Navbar = () => {
             to="/" 
             className="flex items-center space-x-2"
           >
-            <div className="relative h-10 w-10 rounded-full bg-gradient-to-br from-flexsurf-blue to-flexsurf-orange animate-pulse-slow">
-              <div className="absolute inset-1 rounded-full bg-white flex items-center justify-center">
-                <span className="text-lg font-bold bg-gradient-to-r from-flexsurf-blue to-flexsurf-orange bg-clip-text text-transparent">
-                  F
-                </span>
-              </div>
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-flexsurf-blue-dark to-flexsurf-blue bg-clip-text text-transparent">
-              Flexsurf<span className="text-flexsurf-orange">Net</span>
-            </span>
+            <img 
+              src="/lovable-uploads/8bee8404-d570-4f8a-9701-00393796cd26.png" 
+              alt="Flexsurf Net Logo" 
+              className="h-12 w-auto" 
+            />
           </Link>
 
           {/* Desktop Navigation */}

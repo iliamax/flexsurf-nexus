@@ -102,12 +102,38 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="lg:w-1/2 perspective flex justify-center animate-fade-in-slow">
-            <img 
-              src="/lovable-uploads/8bee8404-d570-4f8a-9701-00393796cd26.png" 
-              alt="Flexsurf Net Logo" 
-              className="w-4/5 max-w-md animate-float drop-shadow-2xl" 
-            />
+          <div className="lg:w-1/2 perspective animate-fade-in-slow">
+            <div className="relative preserve-3d animate-float">
+              <div className="glass-card p-8 rounded-2xl shadow-lg backface-hidden">
+                <div className="absolute -top-4 -right-4 p-4 rounded-full bg-flexsurf-orange/80 text-white">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div className="grid grid-cols-2 gap-6">
+                  {[
+                    { title: "High-Speed Internet", value: "Up to 1 Gbps" },
+                    { title: "Uptime Guarantee", value: "99.9%" },
+                    { title: "Support Response", value: "< 15 min" },
+                    { title: "Happy Customers", value: "10,000+" }
+                  ].map((stat, index) => (
+                    <div key={index} className="text-center p-4">
+                      <div className="text-2xl font-bold text-flexsurf-blue">{stat.value}</div>
+                      <div className="text-sm text-gray-600">{stat.title}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 pt-6 border-t border-gray-100">
+                  <div className="flex justify-between items-center">
+                    <div className="text-sm text-gray-500">Current Network Status</div>
+                    <div className="flex items-center">
+                      <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
+                      <span className="text-sm font-medium">All Systems Operational</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
@@ -43,12 +44,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center mb-6">
-              <img 
-                src="/lovable-uploads/8bee8404-d570-4f8a-9701-00393796cd26.png" 
-                alt="Flexsurf Net Logo" 
-                className="h-16 w-auto" 
-              />
+            <Link to="/" className="flex items-center space-x-2 mb-6">
+              <div className="relative h-10 w-10 rounded-full bg-gradient-to-br from-white to-flexsurf-orange animate-pulse-slow">
+                <div className="absolute inset-1 rounded-full bg-flexsurf-blue-dark flex items-center justify-center">
+                  <span className="text-lg font-bold text-white">F</span>
+                </div>
+              </div>
+              <span className="text-xl font-bold text-white">
+                Flexsurf<span className="text-flexsurf-orange">Net</span>
+              </span>
             </Link>
             <p className="text-blue-200 mb-6 max-w-md">
               Providing cutting-edge internet services, professional cybersecurity, and innovative technology solutions to elevate your digital presence.

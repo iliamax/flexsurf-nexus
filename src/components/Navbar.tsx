@@ -1,10 +1,7 @@
-
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import DesktopNav from './navbar/DesktopNav';
-import MobileNav from './navbar/MobileNav';
-import { NavItem } from './navbar/navTypes';
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,7 +30,7 @@ const Navbar = () => {
     }
   };
 
-  const navItems: NavItem[] = [
+  const navItems = [
     {
       label: 'Services',
       dropdown: true,
@@ -74,11 +71,66 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <DesktopNav 
-            navItems={navItems} 
-            activeDropdown={activeDropdown} 
-            toggleDropdown={toggleDropdown} 
-          />
+          <div className="hidden md:flex items-center space-x-8">
+            <div className="flex items-center space-x-6">
+              {navItems.map((item) => (
+                <div key={item.label} className="relative group">
+                  {item.dropdown ? (
+                    <button
+                      onClick={() => toggleDropdown(item.key)}
+                      className="flex items-center space-x-1 text-gray-700 hover:text-flexsurf-blue transition-colors"
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform ${
+                          activeDropdown === item.key ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                  ) : (
+                    <Link
+                      to={item.href || '/'}
+                      className="text-gray-700 hover:text-flexsurf-blue transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+
+                  {item.dropdown && (
+                    <div
+                      className={`absolute top-full left-0 mt-2 w-56 rounded-md shadow-lg glass-card transition-all duration-200 z-20 ${
+                        activeDropdown === item.key
+                          ? 'opacity-100 translate-y-0'
+                          : 'opacity-0 pointer-events-none -translate-y-2'
+                      }`}
+                    >
+                      <div className="py-2">
+                        {item.items?.map((subItem) => (
+                          <Link
+                            key={subItem.label}
+                            to={subItem.href}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-flexsurf-blue hover:text-white transition-colors"
+                            onClick={() => setActiveDropdown(null)}
+                          >
+                            {subItem.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center space-x-4">
+              <Button variant="ghost" className="hover:text-flexsurf-blue">
+                Login
+              </Button>
+              <Button className="bg-flexsurf-blue hover:bg-flexsurf-blue-dark text-white transition-colors">
+                Get Started
+              </Button>
+            </div>
+          </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
@@ -92,14 +144,71 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      <MobileNav 
-        isMenuOpen={isMenuOpen}
-        navItems={navItems}
-        activeDropdown={activeDropdown}
-        toggleDropdown={toggleDropdown}
-        toggleMenu={toggleMenu}
-      />
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden absolute top-full left-0 w-full bg-white shadow-lg transition-all duration-300 ease-in-out ${
+          isMenuOpen
+            ? 'max-h-screen opacity-100'
+            : 'max-h-0 opacity-0 pointer-events-none'
+        } overflow-hidden`}
+      >
+        <div className="container mx-auto px-4 py-4">
+          {navItems.map((item) => (
+            <div key={item.label} className="py-2">
+              {item.dropdown ? (
+                <div>
+                  <button
+                    onClick={() => toggleDropdown(item.key)}
+                    className="flex items-center justify-between w-full text-gray-700 hover:text-flexsurf-blue transition-colors py-2"
+                  >
+                    <span>{item.label}</span>
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform ${
+                        activeDropdown === item.key ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className={`transition-all duration-200 ${
+                      activeDropdown === item.key
+                        ? 'max-h-screen opacity-100 py-2'
+                        : 'max-h-0 opacity-0 pointer-events-none'
+                    } overflow-hidden`}
+                  >
+                    {item.items?.map((subItem) => (
+                      <Link
+                        key={subItem.label}
+                        to={subItem.href}
+                        className="block pl-4 py-2 text-sm text-gray-600 hover:text-flexsurf-blue transition-colors"
+                        onClick={toggleMenu}
+                      >
+                        {subItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  to={item.href || '/'}
+                  className="block text-gray-700 hover:text-flexsurf-blue transition-colors py-2"
+                  onClick={toggleMenu}
+                >
+                  {item.label}
+                </Link>
+              )}
+            </div>
+          ))}
+          <div className="mt-4 flex flex-col space-y-3">
+            <Button variant="ghost" className="w-full justify-center">
+              Login
+            </Button>
+            <Button className="w-full justify-center bg-flexsurf-blue hover:bg-flexsurf-blue-dark text-white">
+              Get Started
+            </Button>
+          </div>
+        </div>
+      </div>
     </nav>
   );
 };

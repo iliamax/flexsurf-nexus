@@ -7,6 +7,9 @@ import Stats from "@/components/Stats";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import NetworkShowcase from "@/components/NetworkShowcase";
+import ServiceAreaMap from "@/components/ServiceAreaMap";
+import ChatSupport from "@/components/ChatSupport";
 
 const Index = () => {
   return (
@@ -16,11 +19,14 @@ const Index = () => {
         <Hero />
         <Stats />
         <Services />
+        <NetworkShowcase />
         <Features />
+        <ServiceAreaMap />
         <Testimonials />
         <CTA />
       </main>
       <Footer />
+      <ChatSupport />
     </div>
   );
 };

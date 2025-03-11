@@ -2,7 +2,7 @@ Project Overview
 
 Project Information
 
-URL: <PROJECT_URL>
+
 
 How to Edit This Code
 
@@ -15,7 +15,7 @@ For local development, clone the repository and make changes in your preferred I
 Steps to Set Up Locally:
 
 # Step 1: Clone the repository
-git clone <YOUR_GIT_URL>
+git clone https://github.com/iliamax/flexsurf-nexus.git
 
 # Step 2: Navigate to the project directory
 cd <YOUR_PROJECT_NAME>

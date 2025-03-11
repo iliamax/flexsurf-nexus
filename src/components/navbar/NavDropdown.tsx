@@ -32,6 +32,7 @@ const NavDropdown = ({
         className={`
           flex items-center ${isMobile ? 'justify-between w-full py-2' : 'space-x-1'} 
           text-gray-700 hover:text-flexsurf-blue transition-colors
+          dark:text-gray-300 dark:hover:text-flexsurf-orange
         `}
       >
         <span>{label}</span>
@@ -53,7 +54,7 @@ const NavDropdown = ({
             <Link
               key={item.label}
               to={item.href}
-              className="block pl-4 py-2 text-sm text-gray-600 hover:text-flexsurf-blue transition-colors"
+              className="block pl-4 py-2 text-sm text-gray-600 hover:text-flexsurf-blue transition-colors dark:text-gray-400 dark:hover:text-flexsurf-orange"
               onClick={onMobileItemClick}
             >
               {item.label}
@@ -73,7 +74,7 @@ const NavDropdown = ({
               <Link
                 key={item.label}
                 to={item.href}
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-flexsurf-blue hover:text-white transition-colors"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-flexsurf-blue hover:text-white transition-colors dark:text-gray-300 dark:hover:bg-flexsurf-orange dark:hover:text-white"
                 onClick={onToggle}
               >
                 {item.label}
